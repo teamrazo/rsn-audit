@@ -207,8 +207,7 @@ export default function AIGrowthAudit() {
         .wrap { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 48px 24px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; font-family: 'Inter', sans-serif; color: #F2F2F2; }
 
         .brand-mark { text-align: center; margin-bottom: 40px; }
-        .brand-icon { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; filter: drop-shadow(0 0 12px rgba(168,58,196,0.4)); }
-        .brand-sub { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #4a4a52; margin-top: 10px; }
+        .brand-logo { max-width: 260px; height: auto; margin: 0 auto; display: block; filter: drop-shadow(0 0 12px rgba(168,58,196,0.3)); }
 
         .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; text-align: center; color: #A83AC4; margin-bottom: 16px; }
         .hero-title { font-size: clamp(30px,5.5vw,46px); font-weight: 800; line-height: 1.1; text-align: center; color: #F2F2F2; margin-bottom: 20px; }
@@ -283,6 +282,7 @@ export default function AIGrowthAudit() {
           .glass-card { padding: 24px 20px; }
           .gap-card { flex-direction: column; align-items: flex-start; gap: 8px; }
           .next-step-box { padding: 28px 20px; }
+          .brand-logo { max-width: 180px; }
           .full-logo { max-width: 200px; }
         }
       `}</style>
@@ -295,8 +295,7 @@ export default function AIGrowthAudit() {
       <div className="wrap">
         {/* Brand Mark */}
         <div className="brand-mark">
-          <img src={RS_ICON} alt="RS" className="brand-icon" />
-          <div className="brand-sub">RazoRSharp Networks</div>
+          <img src={RSN_LOGO} alt="RazoRSharp Networks" className="brand-logo" />
         </div>
 
         {/* INTRO */}

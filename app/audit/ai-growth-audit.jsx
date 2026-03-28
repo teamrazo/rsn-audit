@@ -180,8 +180,38 @@ export default function AIGrowthAudit() {
     }, 200);
   };
 
-  const handleContactSubmit = () => {
-    if (contact.name && contact.email) setPhase("results");
+  const handleContactSubmit = async () => {
+    if (contact.name && contact.email) {
+      setPhase("results");
+      // Fire-and-forget — don't block results display
+      try {
+        await fetch("/api/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: contact.name,
+            email: contact.email,
+            business: contact.business,
+            // Full answers map: { reactive: 7, followup: 4, ... }
+            answers,
+            // Pre-computed for convenience (server recomputes authoritatively)
+            totalScore,
+            pct,
+            tier: range?.label,
+            weakest: weakest.map((g) => g.id),
+            // Include full question metadata for completeness
+            questionMeta: QUESTIONS.map((q) => ({
+              id: q.id,
+              category: q.category,
+              question: q.question,
+              answer: answers[q.id] ?? null,
+            })),
+          }),
+        });
+      } catch (e) {
+        console.warn("Audit submit failed:", e);
+      }
+    }
   };
 
   const CheckSvg = () => (
